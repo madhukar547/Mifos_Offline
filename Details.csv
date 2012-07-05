@@ -1,0 +1,9 @@
+@branchname,@externalId,@excelsheetname
+@branchname,@externalId,@excelsheetname
+@branchname,@externalId,@excelsheetname
+
+/*
+@branchname: this value is used to display office names in combo box
+@externalID: It must match to the one of the externalIds related to the sheets
+@excelsheetname:the name of the excel sheet to be loaded
+*/
