@@ -6,8 +6,6 @@ package mifosoffline;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.jdesktop.application.Action;
 import org.jdesktop.application.ResourceMap;
 import org.jdesktop.application.SingleFrameApplication;
@@ -76,7 +74,7 @@ public class MifosOfflineView extends FrameView {
 
     public class PaintCover implements Printable {
 
-        int printTotal = (int) (new Double(printLoanAmount) + new Double(printSavingAmount) + new Double(printFeesAmount));
+        int printTotal = (int) (new Double(printCurrentLoanAmount) + new Double(printSavingAmount) + new Double(printFeesAmount));
 
         public int print(Graphics g, PageFormat pageFormat, int pageIndex) {
 
@@ -93,12 +91,14 @@ public class MifosOfflineView extends FrameView {
             g.drawString("కం. ఐడి        : " + printcustomerId, 0, 65);
             g.drawString("బ్రాంచి           : " + printGroupName, 0, 80);
             g.drawString("సభ్యురాలు     : " + printMemberName, 0, 95);
-            g.drawString("అసలు          : " + printLoanAmount, 0, 140);
-            g.drawString("వడ్డీ             : "+ printInterestAmount, 0, 125);
+            g.drawString("చె.పాత అసలు : " + printPreviousLoanAmount, 0, 155);
+            g.drawString("చె.పాత వడ్డీ    : " + printPreviousInterestAmount, 0, 170);
+            g.drawString("చె.ప్ర. అసలు   : " + printCurrentLoanAmount, 0, 140);
+            g.drawString("చె.ప్ర.వడ్డీ       : " + printCurrentInterestAmount, 0, 125);
             g.drawString("పొదుపు        : " + printSavingAmount, 0, 110);
-            g.drawString("ఫీజు             : " + printFeesAmount, 0, 155);
-            g.drawString("మొత్తము      : " + printTotal, 0, 170);
-            g.drawString("సూపర్ వైజర్ : " + printLoanOfficer, 0, 190);
+            g.drawString("ఫీజు             : " + printFeesAmount, 0, 185);
+            g.drawString("మొత్తము       : " + printTotal, 0, 200);
+            g.drawString("సూపర్ వైజర్  : " + printLoanOfficer, 0, 215);
             return Printable.PAGE_EXISTS;
         }
     }
@@ -139,6 +139,10 @@ public class MifosOfflineView extends FrameView {
         print.setFont(fontTeluguGautami10);
         sum_of_the_three.setFont(fontTeluguGautami10);
         loanSchedule.setFont(fontTeluguGautami10);
+        principalLabel.setFont(fontTeluguGautami10);
+        interestLabel.setFont(fontTeluguGautami10);
+        presentPrnicplDue.setFont(fontTeluguGautami10);
+        presentInterestDue.setFont(fontTeluguGautami10);
         ArrayList<String> al = new ArrayList<String>();
         Vector<String> vector = new Vector<String>();
         try {
@@ -314,6 +318,14 @@ public class MifosOfflineView extends FrameView {
         label1 = new java.awt.Label();
         loanSchedule = new javax.swing.JLabel();
         loanAccNo = new javax.swing.JButton();
+        principalLabel = new javax.swing.JLabel();
+        previousPrincipalReceived = new javax.swing.JLabel();
+        interestLabel = new javax.swing.JLabel();
+        previousInterestReceived = new javax.swing.JLabel();
+        presentPrnicplDue = new javax.swing.JLabel();
+        presentPrnicplDueValue = new javax.swing.JLabel();
+        presentInterestDue = new javax.swing.JLabel();
+        presentInterestDueValue = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
         javax.swing.JMenu fileMenu = new javax.swing.JMenu();
         CallProcItem = new javax.swing.JMenuItem();
@@ -560,6 +572,30 @@ public class MifosOfflineView extends FrameView {
             }
         });
 
+        principalLabel.setText(resourceMap.getString("principalLabel.text")); // NOI18N
+        principalLabel.setName("principalLabel"); // NOI18N
+
+        previousPrincipalReceived.setText(resourceMap.getString("previousPrincipalReceived.text")); // NOI18N
+        previousPrincipalReceived.setName("previousPrincipalReceived"); // NOI18N
+
+        interestLabel.setText(resourceMap.getString("interestLabel.text")); // NOI18N
+        interestLabel.setName("interestLabel"); // NOI18N
+
+        previousInterestReceived.setText(resourceMap.getString("previousInterestReceived.text")); // NOI18N
+        previousInterestReceived.setName("previousInterestReceived"); // NOI18N
+
+        presentPrnicplDue.setText(resourceMap.getString("presentPrnicplDue.text")); // NOI18N
+        presentPrnicplDue.setName("presentPrnicplDue"); // NOI18N
+
+        presentPrnicplDueValue.setText(resourceMap.getString("presentPrnicplDueValue.text")); // NOI18N
+        presentPrnicplDueValue.setName("presentPrnicplDueValue"); // NOI18N
+
+        presentInterestDue.setText(resourceMap.getString("presentInterestDue.text")); // NOI18N
+        presentInterestDue.setName("presentInterestDue"); // NOI18N
+
+        presentInterestDueValue.setText(resourceMap.getString("presentInterestDueValue.text")); // NOI18N
+        presentInterestDueValue.setName("presentInterestDueValue"); // NOI18N
+
         javax.swing.GroupLayout mainPanel1Layout = new javax.swing.GroupLayout(mainPanel1);
         mainPanel1.setLayout(mainPanel1Layout);
         mainPanel1Layout.setHorizontalGroup(
@@ -567,11 +603,9 @@ public class MifosOfflineView extends FrameView {
             .addGroup(mainPanel1Layout.createSequentialGroup()
                 .addGroup(mainPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(mainPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
+                        .addGap(14, 14, 14)
                         .addGroup(mainPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(sum_of_the_three)
                             .addComponent(loanIntrest)
-                            .addComponent(loanAmount)
                             .addComponent(savingAmount)
                             .addComponent(date)
                             .addComponent(selectBranch)
@@ -580,8 +614,15 @@ public class MifosOfflineView extends FrameView {
                             .addComponent(loanPrinciple)
                             .addComponent(total)
                             .addComponent(fees)
-                            .addComponent(groupName))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(groupName)
+                            .addGroup(mainPanel1Layout.createSequentialGroup()
+                                .addComponent(principalLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(previousPrincipalReceived)
+                                .addGap(1, 1, 1))
+                            .addComponent(sum_of_the_three)
+                            .addComponent(loanAmount))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(mainPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(mainPanel1Layout.createSequentialGroup()
                                 .addComponent(comboSelect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -589,77 +630,88 @@ public class MifosOfflineView extends FrameView {
                                 .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(groupNameValue)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanel1Layout.createSequentialGroup()
-                                .addGroup(mainPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, mainPanel1Layout.createSequentialGroup()
+                                .addGroup(mainPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(mainPanel1Layout.createSequentialGroup()
                                         .addComponent(memberNameValue, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(NoOfInst))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, mainPanel1Layout.createSequentialGroup()
+                                    .addGroup(mainPanel1Layout.createSequentialGroup()
                                         .addGroup(mainPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                             .addComponent(totalValue, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(loanInterestValue, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(loanPrincipleValue, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                                         .addGroup(mainPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addComponent(OSPrincipal)
                                             .addComponent(totalInterest)
                                             .addComponent(totalLoan)))
-                                    .addComponent(mainTotal)
-                                    .addGroup(mainPanel1Layout.createSequentialGroup()
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanel1Layout.createSequentialGroup()
                                         .addGroup(mainPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(mainPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                                 .addComponent(loanAmountText, javax.swing.GroupLayout.Alignment.LEADING)
                                                 .addComponent(feesText, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
                                                 .addComponent(sum_of_three, javax.swing.GroupLayout.Alignment.LEADING))
-                                            .addComponent(savingAmountText, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
+                                            .addComponent(savingAmountText, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(mainPanel1Layout.createSequentialGroup()
+                                                .addComponent(interestLabel)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(previousInterestReceived)))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
                                         .addGroup(mainPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addComponent(currentDemandPrincipal)
                                             .addComponent(pastDuePrincipal)
                                             .addComponent(totalSavings)
-                                            .addComponent(loanSchedule)))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, mainPanel1Layout.createSequentialGroup()
+                                            .addComponent(loanSchedule)
+                                            .addComponent(presentPrnicplDue)))
+                                    .addGroup(mainPanel1Layout.createSequentialGroup()
                                         .addGroup(mainPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                             .addComponent(dateValue, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(externalIdText, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
                                         .addGroup(mainPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(accountStatus, javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addComponent(DateofDebt, javax.swing.GroupLayout.Alignment.TRAILING))))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(mainPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(mainPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(NoOfInstValue)
+                                    .addComponent(loanAccNo)
+                                    .addComponent(NoOfInstValue)
+                                    .addGroup(mainPanel1Layout.createSequentialGroup()
                                         .addGroup(mainPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(statusValue, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGroup(mainPanel1Layout.createSequentialGroup()
                                                 .addGroup(mainPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(statusValue, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(totalLoanValue, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                    .addComponent(totalInterestValue, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
+                                                    .addComponent(pastDuePrincipalValue, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
+                                                    .addComponent(totalSavingsValue, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                    .addComponent(currentDemandPrincipalValue, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
+                                                    .addComponent(OSPrincipalValue, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
+                                                    .addComponent(presentPrnicplDueValue))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(mainPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addGroup(mainPanel1Layout.createSequentialGroup()
+                                                        .addComponent(pastDueInterest)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                        .addComponent(pastDueInterestValue, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                     .addGroup(mainPanel1Layout.createSequentialGroup()
                                                         .addGroup(mainPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                            .addComponent(totalLoanValue, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
-                                                            .addComponent(totalInterestValue, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
-                                                            .addComponent(pastDuePrincipalValue, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
-                                                            .addComponent(totalSavingsValue, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
-                                                            .addComponent(currentDemandPrincipalValue, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
-                                                            .addComponent(mainTotalValue, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
-                                                            .addComponent(OSPrincipalValue, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE))
+                                                            .addComponent(OSInterest)
+                                                            .addGroup(mainPanel1Layout.createSequentialGroup()
+                                                                .addGroup(mainPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                                    .addComponent(presentInterestDue)
+                                                                    .addComponent(currentDemandInterest))
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addGroup(mainPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                    .addComponent(presentInterestDueValue)
+                                                                    .addComponent(currentDemandInterestValue, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                         .addGroup(mainPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                            .addGroup(mainPanel1Layout.createSequentialGroup()
-                                                                .addComponent(OSInterest)
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(OSInterestValue, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                            .addGroup(mainPanel1Layout.createSequentialGroup()
-                                                                .addComponent(currentDemandInterest)
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(currentDemandInterestValue, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                            .addGroup(mainPanel1Layout.createSequentialGroup()
-                                                                .addComponent(pastDueInterest)
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(pastDueInterestValue, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                                                .addGap(122, 122, 122))
-                                            .addComponent(DateofDebtValue)))
-                                    .addComponent(loanAccNo))))
+                                                            .addComponent(mainTotal)
+                                                            .addComponent(OSInterestValue, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(mainTotalValue, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGap(36, 36, 36))
+                                    .addComponent(DateofDebtValue))))
                         .addGap(656, 656, 656))
                     .addGroup(mainPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
@@ -671,7 +723,7 @@ public class MifosOfflineView extends FrameView {
                         .addGap(29, 29, 29)
                         .addComponent(print)
                         .addGap(150, 150, 150)))
-                .addGap(2043, 2043, 2043))
+                .addContainerGap())
         );
         mainPanel1Layout.setVerticalGroup(
             mainPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -752,17 +804,29 @@ public class MifosOfflineView extends FrameView {
                             .addComponent(savingAmountText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(mainPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(loanAmount)
-                            .addComponent(loanAmountText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(loanAmountText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(loanAmount))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(mainPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(feesText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(fees))
-                        .addGap(18, 18, 18)
+                        .addGap(7, 7, 7)
                         .addGroup(mainPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(principalLabel)
+                            .addComponent(previousPrincipalReceived)
+                            .addComponent(interestLabel)
+                            .addComponent(previousInterestReceived)
+                            .addComponent(presentInterestDueValue)
+                            .addComponent(presentInterestDue)
+                            .addComponent(presentPrnicplDueValue)
+                            .addComponent(presentPrnicplDue))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(mainPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(sum_of_three, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(sum_of_the_three)
-                            .addComponent(sum_of_three, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(28, 28, 28))
+                            .addComponent(loanAccNo)
+                            .addComponent(loanSchedule))
+                        .addGap(11, 11, 11))
                     .addGroup(mainPanel1Layout.createSequentialGroup()
                         .addGroup(mainPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(totalSavings)
@@ -778,15 +842,9 @@ public class MifosOfflineView extends FrameView {
                             .addComponent(currentDemandPrincipal)
                             .addComponent(currentDemandInterest)
                             .addComponent(currentDemandPrincipalValue)
-                            .addComponent(currentDemandInterestValue))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(mainPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(currentDemandInterestValue)
                             .addComponent(mainTotal)
-                            .addComponent(mainTotalValue))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(mainPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(loanSchedule)
-                            .addComponent(loanAccNo))))
+                            .addComponent(mainTotalValue))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(mainPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(save)
@@ -802,12 +860,12 @@ public class MifosOfflineView extends FrameView {
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(mainPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addComponent(mainPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1019, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(2749, Short.MAX_VALUE))
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
+            .addGroup(mainPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(mainPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -1179,31 +1237,58 @@ public class MifosOfflineView extends FrameView {
                 String id = externalId.getText();
                 printcustomerId = externalIdText.getText();
                 printDate = (String) list.get(8);
-                double remainAmount=0;
-                double pricipalPaid=0;
-                double interestPaid=0;
-                double totalPaid=Double.parseDouble((String)list.get(5));
-                double interestDue=Double.parseDouble((String)list.get(4));
-                if (interestDue > 0) {
-                    remainAmount = totalPaid - interestDue;
+                double remainAmount = 0;
+                double totalPaid = Double.parseDouble((String) list.get(5));
+                double previousPrincipalDue = Double.parseDouble((String) list.get(17));
+                double previousinterestDue = Double.parseDouble((String) list.get(18));
+                double currentPrincipalDue = Double.parseDouble((String) list.get(19));
+                double currentinterestDue = Double.parseDouble((String) list.get(20));
+
+                if (previousinterestDue > 0 || currentinterestDue > 0 || currentPrincipalDue > 0) {
+                    remainAmount = totalPaid - previousinterestDue;
                     if (remainAmount < 0) {
-                        interestPaid = totalPaid;
+                        previousInterestPaid = totalPaid;
+                        previousPrincipalPaid = 0;
+                        currentInterestPaid = 0;
+                        currentPrincipalPaid = 0;
                     }
-
                     if (remainAmount > 0) {
-                        interestPaid = interestDue;
-                        pricipalPaid = remainAmount;
-                    }
+                        totalPaid = remainAmount;
+                        remainAmount = remainAmount - previousPrincipalDue;
+                        if (remainAmount <= 0) {
+                            previousInterestPaid = previousinterestDue;
+                            previousPrincipalPaid = totalPaid;
+                        }
+                        if (remainAmount > 0) {
+                            totalPaid = remainAmount;
+                            remainAmount = remainAmount - currentinterestDue;
+                            if (remainAmount < 0) {
+                                previousInterestPaid = previousinterestDue;
+                                previousPrincipalPaid = previousPrincipalDue;
+                                currentInterestPaid = totalPaid;
+                            }
+                            if (remainAmount > 0) {
+                                previousInterestPaid = previousinterestDue;
+                                previousPrincipalPaid = previousPrincipalDue;
+                                currentInterestPaid = currentinterestDue;
+                                currentPrincipalPaid = remainAmount;
+                            }
+                        }
 
-                } else {
-                    pricipalPaid = totalPaid;
+                    }
                 }
-                
-                System.out.println("Interest Due"+interestDue);
-                System.out.println("Remain Loan Amount"+remainAmount);
-               
-                printInterestAmount=String.valueOf(interestPaid).replace(".0", "");
-                printLoanAmount = String.valueOf(pricipalPaid).replace(".0", "");
+
+
+
+                previousInterestReceived.setText(String.valueOf(Math.round(previousInterestPaid)));
+                previousPrincipalReceived.setText(String.valueOf(Math.round(previousPrincipalPaid)));
+                presentPrnicplDueValue.setText(String.valueOf(Math.round(currentPrincipalPaid)));
+                presentInterestDueValue.setText(String.valueOf(Math.round(currentInterestPaid)));
+                //JOptionPane.showMessageDialog(null, "Interest :"+Math.round(interestPaid)+"\nPrincipal:"+Math.round(principalPaid));
+                printCurrentInterestAmount = String.valueOf(currentInterestPaid).replace(".0", "");
+                printCurrentLoanAmount = String.valueOf(currentPrincipalPaid).replace(".0", "");
+                printPreviousInterestAmount = String.valueOf(previousInterestPaid).replace(".0", "");
+                printPreviousLoanAmount = String.valueOf(previousPrincipalPaid).replace(".0", "");
                 printSavingAmount = ((String) list.get(6)).replace(".0", "");
                 printFeesAmount = ((String) list.get(7)).replace(".0", "");
                 printReciptNo = (String) list.get(9);
@@ -1221,8 +1306,8 @@ public class MifosOfflineView extends FrameView {
             PrinterJob job = PrinterJob.getPrinterJob();
             PageFormat pfl = job.defaultPage();
             Paper paper = new Paper();
-            paper.setSize(135, 210); // Large Address Dimension
-            paper.setImageableArea(4, 4, 180, 210);
+            paper.setSize(145, 230); // Large Address Dimension
+            paper.setImageableArea(4, 4, 180, 235);
             pfl.setPaper(paper);
             pfl.setOrientation(PageFormat.PORTRAIT);
             // Set up a book//
@@ -1244,6 +1329,7 @@ public class MifosOfflineView extends FrameView {
         } catch (Exception e1) {
             e1.printStackTrace();
         }
+        JOptionPane.showMessageDialog(null, "Successfully Updated ");
         //externalIdText.setText("");
         loanAmountText.setText("");
         savingAmountText.setText("");
@@ -1280,8 +1366,10 @@ public class MifosOfflineView extends FrameView {
         externalIdText.requestFocus();
         externalIdText.moveCaretPosition(9);
         externalIdText.setCaretPosition(8);
-        JOptionPane.showMessageDialog(null, "Successfully Updated ");
-
+        previousPrincipalReceived.setText("");
+        previousInterestReceived.setText("");
+        presentPrnicplDueValue.setText("");
+        presentInterestDueValue.setText("");
 
     }//GEN-LAST:event_saveActionPerformed
 
@@ -1565,7 +1653,7 @@ public class MifosOfflineView extends FrameView {
             OfficeDto dto = (OfficeDto) iterator.next();
             globalOfficeId = dto.getGlobalNo();
             String branch_Name = dto.getDisplayName().trim();
-            //DataRetrieve_Remote dataRetrieve_Remote = new DataRetrieve_Remote(globalOfficeId, branch_Name);
+            DataRetrieve_Remote dataRetrieve_Remote = new DataRetrieve_Remote(globalOfficeId, branch_Name);
             System.out.println("added.." + globalOfficeId + "\tbranch name:" + branch_Name);
         }
         JOptionPane.showMessageDialog(null, "Exporting is Successfull");
@@ -1628,16 +1716,18 @@ public class MifosOfflineView extends FrameView {
                                 BufferedWriter bw = null;
                                 String encoding = "UTF8";
                                 bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("./loanSchedule.txt"), "UTF8"));
-                                bw.write("Serial No" + "\t" + "Paid Date" + " " + "\tPrincipal" + "   " + "Principal Paid" + "    " + "Interest" + "      " + "Interest Paid"+"    TotalPaid");
+                                bw.write("Serial No" + "\t" + "Paid Date" + " " + "\tPrincipal" + "   " + "Principal Paid" + "    " + "Interest" + "      " + "Interest Paid" + "    TotalPaid");
                                 bw.newLine();
                                 bw.write("--------------------------------------------------------------------------------------------------------");
                                 bw.newLine();
                                 Iterator<ResultsDTO> iterator = list.iterator();
-                                int count=1;
+                                int count = 1;
                                 while (iterator.hasNext()) {
                                     ResultsDTO resultsDTO = iterator.next();
-                                    if(resultsDTO.getPayDate().equalsIgnoreCase("null")) continue;
-                                    result = resultsDTO.getInstallmentId() + "\t\t" + resultsDTO.getPayDate() + " \t " + Math.round(resultsDTO.getPrinciple()) + "\t\t" + Math.round(resultsDTO.getPrinciplePaid()) + "\t\t" + Math.round(resultsDTO.getInterest()) + "\t\t" + Math.round(resultsDTO.getInterestPaid()) +"\t\t"+Math.round(resultsDTO.getTotalPaid())+ "\n";
+                                    if (resultsDTO.getPayDate().equalsIgnoreCase("null")) {
+                                        continue;
+                                    }
+                                    result = resultsDTO.getInstallmentId() + "\t\t" + resultsDTO.getPayDate() + " \t " + Math.round(resultsDTO.getPrinciple()) + "\t\t" + Math.round(resultsDTO.getPrinciplePaid()) + "\t\t" + Math.round(resultsDTO.getInterest()) + "\t\t" + Math.round(resultsDTO.getInterestPaid()) + "\t\t" + Math.round(resultsDTO.getTotalPaid()) + "\n";
                                     bw.write(result);
                                     bw.newLine();
                                     count++;
@@ -1775,7 +1865,7 @@ public class MifosOfflineView extends FrameView {
                 statement.executeUpdate(svalue);
 
             }
-            System.out.println("Last Inserted Record "+svalue);
+            System.out.println("Last Inserted Record " + svalue);
             System.out.println("successfully inserted" + count);
         } catch (Exception e) {
             e.printStackTrace();
@@ -1796,9 +1886,8 @@ public class MifosOfflineView extends FrameView {
                 // TODO: handle exception
             }
             JOptionPane.showMessageDialog(null, "The ledger process is completed");
-        }  
+        }
     }//GEN-LAST:event_processLedgerActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem CallProcItem;
     private javax.swing.JLabel DateofDebt;
@@ -1826,6 +1915,7 @@ public class MifosOfflineView extends FrameView {
     private javax.swing.JTextField feesText;
     private javax.swing.JLabel groupName;
     private javax.swing.JLabel groupNameValue;
+    private javax.swing.JLabel interestLabel;
     private java.awt.Label label1;
     private javax.swing.JButton loanAccNo;
     private javax.swing.JLabel loanAmount;
@@ -1846,6 +1936,13 @@ public class MifosOfflineView extends FrameView {
     private javax.swing.JLabel pastDueInterestValue;
     private javax.swing.JLabel pastDuePrincipal;
     private javax.swing.JLabel pastDuePrincipalValue;
+    private javax.swing.JLabel presentInterestDue;
+    private javax.swing.JLabel presentInterestDueValue;
+    private javax.swing.JLabel presentPrnicplDue;
+    private javax.swing.JLabel presentPrnicplDueValue;
+    private javax.swing.JLabel previousInterestReceived;
+    private javax.swing.JLabel previousPrincipalReceived;
+    private javax.swing.JLabel principalLabel;
     private javax.swing.JButton print;
     private javax.swing.JMenuItem processLedger;
     private javax.swing.JProgressBar progressBar;
@@ -1882,9 +1979,17 @@ public class MifosOfflineView extends FrameView {
     static String printMemberName;
     static String printTotal;
     static String printLoanOfficer;
-    static String printLoanAmount;
-    static String printInterestAmount;
+    static String printCurrentLoanAmount;
+    static String printCurrentInterestAmount;
+    static String printPreviousLoanAmount;
+    static String printPreviousInterestAmount;
     static String printSavingAmount;
     static String printFeesAmount;
     static String receiptNo;
+    private double interestPaid;
+    private double principalPaid;
+    private double previousInterestPaid;
+    private double previousPrincipalPaid;
+    private double currentInterestPaid;
+    private double currentPrincipalPaid;
 }

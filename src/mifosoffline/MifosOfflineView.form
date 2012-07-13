@@ -15,14 +15,14 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="mainPanel1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="32" max="32767" attributes="0"/>
+                  <Component id="mainPanel1" min="-2" pref="1019" max="-2" attributes="0"/>
+                  <EmptySpace pref="2749" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
                   <Component id="mainPanel1" min="-2" max="-2" attributes="0"/>
               </Group>
@@ -44,11 +44,9 @@
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="sum_of_the_three" alignment="1" min="-2" max="-2" attributes="0"/>
                                   <Component id="loanIntrest" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="loanAmount" alignment="1" min="-2" max="-2" attributes="0"/>
                                   <Component id="savingAmount" alignment="1" min="-2" max="-2" attributes="0"/>
                                   <Component id="date" min="-2" max="-2" attributes="0"/>
                                   <Component id="selectBranch" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -58,8 +56,16 @@
                                   <Component id="total" min="-2" max="-2" attributes="0"/>
                                   <Component id="fees" min="-2" max="-2" attributes="0"/>
                                   <Component id="groupName" min="-2" max="-2" attributes="1"/>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="principalLabel" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="previousPrincipalReceived" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="sum_of_the_three" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="loanAmount" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="comboSelect" min="-2" max="-2" attributes="0"/>
@@ -68,10 +74,10 @@
                                   </Group>
                                   <Component id="groupNameValue" alignment="0" min="-2" max="-2" attributes="1"/>
                                   <Group type="102" alignment="1" attributes="0">
-                                      <Group type="103" groupAlignment="1" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="memberNameValue" min="-2" pref="205" max="-2" attributes="1"/>
-                                              <EmptySpace pref="13" max="32767" attributes="0"/>
+                                              <EmptySpace max="32767" attributes="0"/>
                                               <Component id="NoOfInst" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
@@ -80,15 +86,14 @@
                                                   <Component id="loanInterestValue" alignment="0" max="32767" attributes="1"/>
                                                   <Component id="loanPrincipleValue" alignment="0" pref="111" max="32767" attributes="1"/>
                                               </Group>
-                                              <EmptySpace pref="49" max="32767" attributes="0"/>
+                                              <EmptySpace pref="42" max="32767" attributes="0"/>
                                               <Group type="103" groupAlignment="1" attributes="0">
                                                   <Component id="OSPrincipal" min="-2" max="-2" attributes="0"/>
                                                   <Component id="totalInterest" min="-2" max="-2" attributes="0"/>
                                                   <Component id="totalLoan" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
-                                          <Component id="mainTotal" alignment="1" min="-2" max="-2" attributes="0"/>
-                                          <Group type="102" attributes="0">
+                                          <Group type="102" alignment="1" attributes="0">
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                                                       <Component id="loanAmountText" alignment="0" max="32767" attributes="1"/>
@@ -96,13 +101,19 @@
                                                       <Component id="sum_of_three" alignment="0" max="32767" attributes="1"/>
                                                   </Group>
                                                   <Component id="savingAmountText" alignment="0" min="-2" pref="140" max="-2" attributes="1"/>
+                                                  <Group type="102" attributes="0">
+                                                      <Component id="interestLabel" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                      <Component id="previousInterestReceived" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
                                               </Group>
-                                              <EmptySpace pref="67" max="32767" attributes="0"/>
+                                              <EmptySpace pref="60" max="32767" attributes="0"/>
                                               <Group type="103" groupAlignment="1" attributes="0">
                                                   <Component id="currentDemandPrincipal" min="-2" max="-2" attributes="0"/>
                                                   <Component id="pastDuePrincipal" min="-2" max="-2" attributes="0"/>
                                                   <Component id="totalSavings" min="-2" max="-2" attributes="0"/>
                                                   <Component id="loanSchedule" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="presentPrnicplDue" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
@@ -110,7 +121,7 @@
                                                   <Component id="dateValue" alignment="1" max="32767" attributes="1"/>
                                                   <Component id="externalIdText" alignment="1" pref="114" max="32767" attributes="1"/>
                                               </Group>
-                                              <EmptySpace pref="68" max="32767" attributes="0"/>
+                                              <EmptySpace pref="61" max="32767" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Component id="accountStatus" alignment="1" min="-2" max="-2" attributes="0"/>
                                                   <Component id="DateofDebt" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -119,48 +130,57 @@
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="NoOfInstValue" min="-2" max="-2" attributes="1"/>
-                                              <Group type="103" alignment="0" groupAlignment="0" attributes="0">
-                                                  <Group type="102" attributes="0">
+                                          <Component id="loanAccNo" min="-2" max="-2" attributes="0"/>
+                                          <Component id="NoOfInstValue" min="-2" max="-2" attributes="1"/>
+                                          <Group type="102" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="statusValue" min="-2" pref="169" max="-2" attributes="1"/>
+                                                  <Group type="102" alignment="0" attributes="0">
                                                       <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Component id="statusValue" min="-2" pref="169" max="-2" attributes="1"/>
+                                                          <Component id="totalLoanValue" alignment="0" max="32767" attributes="1"/>
+                                                          <Component id="totalInterestValue" alignment="0" pref="69" max="32767" attributes="1"/>
+                                                          <Component id="pastDuePrincipalValue" alignment="0" pref="69" max="32767" attributes="1"/>
+                                                          <Component id="totalSavingsValue" alignment="0" max="32767" attributes="1"/>
+                                                          <Component id="currentDemandPrincipalValue" alignment="0" pref="69" max="32767" attributes="1"/>
+                                                          <Component id="OSPrincipalValue" alignment="0" pref="69" max="32767" attributes="1"/>
+                                                          <Component id="presentPrnicplDueValue" min="-2" max="-2" attributes="0"/>
+                                                      </Group>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Group type="103" groupAlignment="0" attributes="0">
+                                                          <Group type="102" alignment="0" attributes="0">
+                                                              <Component id="pastDueInterest" min="-2" max="-2" attributes="0"/>
+                                                              <EmptySpace max="-2" attributes="0"/>
+                                                              <Component id="pastDueInterestValue" min="-2" pref="72" max="-2" attributes="1"/>
+                                                          </Group>
                                                           <Group type="102" alignment="0" attributes="0">
                                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                                  <Component id="totalLoanValue" alignment="0" pref="82" max="32767" attributes="1"/>
-                                                                  <Component id="totalInterestValue" alignment="0" pref="82" max="32767" attributes="1"/>
-                                                                  <Component id="pastDuePrincipalValue" alignment="0" pref="82" max="32767" attributes="1"/>
-                                                                  <Component id="totalSavingsValue" alignment="0" pref="82" max="32767" attributes="1"/>
-                                                                  <Component id="currentDemandPrincipalValue" alignment="0" pref="82" max="32767" attributes="1"/>
-                                                                  <Component id="mainTotalValue" alignment="0" pref="82" max="32767" attributes="1"/>
-                                                                  <Component id="OSPrincipalValue" alignment="0" pref="82" max="32767" attributes="1"/>
+                                                                  <Component id="OSInterest" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                                  <Group type="102" alignment="0" attributes="0">
+                                                                      <Group type="103" groupAlignment="1" attributes="0">
+                                                                          <Component id="presentInterestDue" alignment="1" min="-2" max="-2" attributes="0"/>
+                                                                          <Component id="currentDemandInterest" alignment="1" min="-2" max="-2" attributes="0"/>
+                                                                      </Group>
+                                                                      <EmptySpace max="-2" attributes="0"/>
+                                                                      <Group type="103" groupAlignment="0" attributes="0">
+                                                                          <Component id="presentInterestDueValue" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                                          <Component id="currentDemandInterestValue" alignment="0" min="-2" pref="66" max="-2" attributes="0"/>
+                                                                      </Group>
+                                                                  </Group>
                                                               </Group>
                                                               <EmptySpace max="-2" attributes="0"/>
                                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                                  <Group type="102" alignment="0" attributes="0">
-                                                                      <Component id="OSInterest" min="-2" max="-2" attributes="0"/>
-                                                                      <EmptySpace max="-2" attributes="0"/>
-                                                                      <Component id="OSInterestValue" min="-2" pref="66" max="-2" attributes="1"/>
-                                                                  </Group>
-                                                                  <Group type="102" alignment="0" attributes="0">
-                                                                      <Component id="currentDemandInterest" min="-2" max="-2" attributes="0"/>
-                                                                      <EmptySpace max="-2" attributes="0"/>
-                                                                      <Component id="currentDemandInterestValue" min="-2" pref="66" max="-2" attributes="0"/>
-                                                                  </Group>
-                                                                  <Group type="102" alignment="0" attributes="0">
-                                                                      <Component id="pastDueInterest" min="-2" max="-2" attributes="0"/>
-                                                                      <EmptySpace max="-2" attributes="0"/>
-                                                                      <Component id="pastDueInterestValue" min="-2" pref="72" max="-2" attributes="1"/>
-                                                                  </Group>
+                                                                  <Component id="mainTotal" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                                  <Component id="OSInterestValue" alignment="0" min="-2" pref="66" max="-2" attributes="1"/>
                                                               </Group>
                                                           </Group>
                                                       </Group>
-                                                      <EmptySpace min="-2" pref="122" max="-2" attributes="0"/>
                                                   </Group>
-                                                  <Component id="DateofDebtValue" min="-2" max="-2" attributes="1"/>
                                               </Group>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="mainTotalValue" max="32767" attributes="1"/>
+                                              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                                           </Group>
-                                          <Component id="loanAccNo" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="DateofDebtValue" min="-2" max="-2" attributes="1"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -178,7 +198,7 @@
                               <EmptySpace min="-2" pref="150" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="2043" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -287,20 +307,33 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="loanAmount" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="loanAmountText" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="loanAmount" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="feesText" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="fees" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="sum_of_the_three" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="sum_of_three" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="principalLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="previousPrincipalReceived" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="interestLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="previousInterestReceived" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="presentInterestDueValue" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="presentInterestDue" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="presentPrnicplDueValue" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="presentPrnicplDue" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="sum_of_three" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="sum_of_the_three" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="loanAccNo" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="loanSchedule" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="3" attributes="0">
@@ -320,16 +353,8 @@
                                   <Component id="currentDemandInterest" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="currentDemandPrincipalValue" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="currentDemandInterestValue" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="mainTotal" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="mainTotalValue" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="loanSchedule" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="loanAccNo" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -737,6 +762,54 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="loanAccNoActionPerformed"/>
               </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="principalLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" resourceKey="principalLabel.text"/>
+                <Property name="name" type="java.lang.String" value="principalLabel" noResource="true"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="previousPrincipalReceived">
+              <Properties>
+                <Property name="text" type="java.lang.String" resourceKey="previousPrincipalReceived.text"/>
+                <Property name="name" type="java.lang.String" value="previousPrincipalReceived" noResource="true"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="interestLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" resourceKey="interestLabel.text"/>
+                <Property name="name" type="java.lang.String" value="interestLabel" noResource="true"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="previousInterestReceived">
+              <Properties>
+                <Property name="text" type="java.lang.String" resourceKey="previousInterestReceived.text"/>
+                <Property name="name" type="java.lang.String" value="previousInterestReceived" noResource="true"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="presentPrnicplDue">
+              <Properties>
+                <Property name="text" type="java.lang.String" resourceKey="presentPrnicplDue.text"/>
+                <Property name="name" type="java.lang.String" value="presentPrnicplDue" noResource="true"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="presentPrnicplDueValue">
+              <Properties>
+                <Property name="text" type="java.lang.String" resourceKey="presentPrnicplDueValue.text"/>
+                <Property name="name" type="java.lang.String" value="presentPrnicplDueValue" noResource="true"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="presentInterestDue">
+              <Properties>
+                <Property name="text" type="java.lang.String" resourceKey="presentInterestDue.text"/>
+                <Property name="name" type="java.lang.String" value="presentInterestDue" noResource="true"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="presentInterestDueValue">
+              <Properties>
+                <Property name="text" type="java.lang.String" resourceKey="presentInterestDueValue.text"/>
+                <Property name="name" type="java.lang.String" value="presentInterestDueValue" noResource="true"/>
+              </Properties>
             </Component>
           </SubComponents>
         </Container>
